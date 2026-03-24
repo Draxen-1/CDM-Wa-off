@@ -31,7 +31,6 @@ print(f"""
 ║{CYAN}                                                      ║
 ║{YELLOW}{BOLD}      ⚡ SKY PLUG CDM - CYBER DIVISION ⚡{CYAN}      ║
 ║                                            ║
-║{MAGENTA}      ▶ Secure • Learn • Dominate • Repeat{CYAN}    ║
 ╚══════════════════════════════════════════════════════╝{RESET}
 """)
 def typewriter(text, color=CYAN, delay=0.03):
