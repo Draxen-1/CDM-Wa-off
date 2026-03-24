@@ -36,16 +36,15 @@ c’est une **vision**, une **puissance**, une **stratégie vivante**.
 👑 Sous son commandement :
 - Le code devient pouvoir  
 - Le digital devient territoire  
-- CDM devient légende  
+- CDM devient Légende
 
 
 
 ## 🚀 Fonctionnalités
 
-⚡ Automatisation  
-🤖 Scripts intelligents  
+🤖 Ban temporaire sapp
 📊 Contrôle terminal  
-💻 Multi-plateforme  
+💻 Multi-plateforme
 
 
 
