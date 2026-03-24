@@ -1,8 +1,5 @@
 # CDM-Wa-off
 <p CDM-Wa-off="center">
-  <img src="https://files.catbox.moe/tg3whe.jpg" width="200" alt="CDM-Wa-off Logo"/>
-</p>
-
 <h1 align="center">⚡ CDM-Wa-off ⚡</h1>
 
 <p align="center">
