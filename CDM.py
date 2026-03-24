@@ -30,8 +30,7 @@ print(f"""
 ║
 ║{CYAN}                                                      ║
 ║{YELLOW}{BOLD}      ⚡ SKY PLUG CDM - CYBER DIVISION ⚡{CYAN}      ║
-║      {WHITE}[ CDM TECH 503 | Elite Network ]{CYAN}      ║
-║                                                      ║
+║                                            ║
 ║{MAGENTA}      ▶ Secure • Learn • Dominate • Repeat{CYAN}    ║
 ╚══════════════════════════════════════════════════════╝{RESET}
 """)
