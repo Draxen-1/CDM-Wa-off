@@ -1,5 +1,5 @@
 # CDM-Wa-off
-<p align="center">
+<p CDM-Wa-off="center">
   <img src="https://files.catbox.moe/tg3whe.jpg" width="200" alt="CDM-Wa-off Logo"/>
 </p>
 
@@ -14,7 +14,7 @@
   🔗 <a href="https://github.com/Draxen-1/CDM-Wa-off"><b>Accéder au projet officiel</b></a>
 </p>
 
----
+
 
 ## 🧠 À propos
 
@@ -42,7 +42,6 @@ Sous le commandement de **Sky Plug CDM** :
 
 ⚡ *Le nom CDM restera gravé dans le digital.*
 
----
 
 ## 🚀 Fonctionnalités
 
@@ -52,7 +51,7 @@ Sous le commandement de **Sky Plug CDM** :
 🤖 Scripts intelligents  
 💻 Compatible multi-plateformes  
 
----
+
 
 ## 🖥️ Installation & Exécution
 
