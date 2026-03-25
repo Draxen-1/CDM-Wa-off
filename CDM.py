@@ -19,7 +19,7 @@ def clear_screen():
 
 def print_banner():
     clear_screen()
-print(f"""
+    print(f"""
 {CYAN}╔══════════════════════════════════════════════════════╗
 ║{GREEN}  ███████╗██╗  ██╗██╗   ██╗    
 ║{GREEN}  ██╔════╝██║ ██╔╝╚██╗ ██╔╝    
@@ -29,10 +29,11 @@ print(f"""
 ║{GREEN}  ╚══════╝╚═╝  ╚═╝   ╚═╝      
 ║
 ║{CYAN}                                                      ║
-║{YELLOW}{BOLD}      ⚡ SKY PLUG CDM - CYBER DIVISION ⚡{CYAN}      ║
-║                                            ║
+║{YELLOW}{BOLD}      ⚡ CDM TECH - BY SKY PLUG ⚡{CYAN}      ║
+║{BLUE}{BOLD}               CDM 503                 {CYAN}      ║
 ╚══════════════════════════════════════════════════════╝{RESET}
 """)
+
 def typewriter(text, color=CYAN, delay=0.03):
     colored_text = f"{color}{text}{RESET}"
     for char in colored_text:
@@ -43,8 +44,14 @@ def typewriter(text, color=CYAN, delay=0.03):
 
 def load_spam_messages(filename="spam.txt"):
     if not os.path.exists(filename):
-        default_messages = ["Digital Crew Alert 🚀", "243 Access Granted 🔥", "Neo Flood Active 💥"]
-        with open(filename, 'w') as f:
+        default_messages = [
+            "CDM Tech - CDM 503 🔥",
+            "Sky Plug - Code & Conquer ⚡",
+            "CDM Family - Immortal Force 🚀",
+            "503 Access Granted 💀",
+            "Neo Flood Active 🔥"
+        ]
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write('\n'.join(default_messages))
     
     with open(filename, 'r', encoding='utf-8') as f:
@@ -73,29 +80,32 @@ def spam_worker(phone_number, messages, spam_count, delay_range):
 
 def main():
     print_banner()
-    typewriter("INITIALIZING NEURALINK...", GREEN, 0.02)
+    typewriter("INITIALIZING CDM TECH SYSTEM...", GREEN, 0.02)
+    typewriter(f"{BOLD}DEVELOPER: SKY PLUG{RESET}", PURPLE, 0.03)
+    time.sleep(1)
     
     typewriter("TARGET ACQUISITION:", BLUE)
-    target_number = input(f"{PURPLE}╠══[DC243]> {RED}PHONE: {RESET}").strip()
+    target_number = input(f"{PURPLE}╠══[CDM503]> {RED}PHONE: {RESET}").strip()
     
     typewriter("FLOOD INTENSITY:", BLUE)
-    spam_count = int(input(f"{PURPLE}╠══[DC243]> {RED}COUNT: {RESET}"))
+    spam_count = int(input(f"{PURPLE}╠══[CDM503]> {RED}COUNT: {RESET}"))
     
     typewriter("ATTACK TIMING:", BLUE)
-    delay_min = float(input(f"{PURPLE}╠══[DC243]> {RED}MIN(s): {RESET}"))
-    delay_max = float(input(f"{PURPLE}╠══[DC243]> {RED}MAX(s): {RESET}"))
+    delay_min = float(input(f"{PURPLE}╠══[CDM503]> {RED}MIN(s): {RESET}"))
+    delay_max = float(input(f"{PURPLE}╠══[CDM503]> {RED}MAX(s): {RESET}"))
     
     messages = load_spam_messages()
     typewriter(f"PAYLOADS LOADED: {len(messages)}", YELLOW)
     
     clear_screen()
     print_banner()
-    typewriter("NEURALINK SYNC CONFIRMED?", RED)
-    confirm = input(f"{PURPLE}╠══[DC243]> {RED}LAUNCH (Y/N): {RESET}").lower()
+    typewriter("READY TO DEPLOY?", RED)
+    confirm = input(f"{PURPLE}╠══[CDM503]> {RED}LAUNCH (Y/N): {RESET}").lower()
     
     if confirm == 'y':
         typewriter("FLOOD SEQUENCE ACTIVE...", GREEN)
-        typewriter("DIGITAL CREW 243 - ONLINE", YELLOW)
+        typewriter("CDM TECH - CDM 503", YELLOW)
+        typewriter(f"{BOLD}BY SKY PLUG{RESET}", CYAN)
         
         spam_thread = Thread(target=spam_worker, args=(target_number, messages, spam_count, (delay_min, delay_max)))
         spam_thread.daemon = True
@@ -105,7 +115,8 @@ def main():
             while True:
                 time.sleep(1)
         except KeyboardInterrupt:
-            typewriter("NEURALINK DISCONNECTED", RED)
+            typewriter("\nCDM TECH SYSTEM DISCONNECTED", RED)
+            typewriter("SKY PLUG - SIGNING OFF", PURPLE)
     else:
         typewriter("OPERATION CANCELLED", RED)
 
