@@ -51,6 +51,9 @@ c’est une **vision**, une **puissance**, une **stratégie vivante**.
 ## 🖥️ Installation
 
 bash
+
+pkg install git python -y
+
 git clone https://github.com/Draxen-1/CDM-Wa-off
 
 cd CDM-Wa-off
@@ -58,6 +61,7 @@ cd CDM-Wa-off
 python CDM.py
 
 
+Faut fork le répo et rejoindre la chaîne pour que l'outil fonctionne
 📢 Rejoindre CDM
 <p align="center"> <a href="https://whatsapp.com/channel/0029VbCArXO2phHPux5T8D3K"> <img src="https://img.shields.io/badge/🚀%20Rejoindre%20CDM-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/> </a> </p>
 ⚡ Signature
