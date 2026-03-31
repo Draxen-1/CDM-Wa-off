@@ -29,96 +29,124 @@ def print_banner():
 ║{GREEN}  ╚══════╝╚═╝  ╚═╝   ╚═╝      
 ║
 ║{CYAN}                                                      ║
-║{YELLOW}{BOLD}      ⚡ CDM TECH - BY SKY PLUG ⚡{CYAN}      ║
+║{YELLOW}{BOLD}      ⚡ CDM TECH - PAR SKY PLUG ⚡{CYAN}      ║
 ║{BLUE}{BOLD}               CDM 503                 {CYAN}      ║
 ╚══════════════════════════════════════════════════════╝{RESET}
 """)
 
-def typewriter(text, color=CYAN, delay=0.03):
-    colored_text = f"{color}{text}{RESET}"
-    for char in colored_text:
+def typewriter(texte, couleur=CYAN, delai=0.03):
+    texte_colore = f"{couleur}{texte}{RESET}"
+    for char in texte_colore:
         sys.stdout.write(char)
         sys.stdout.flush()
-        time.sleep(delay)
+        time.sleep(delai)
     print()
 
-def load_spam_messages(filename="spam.txt"):
-    if not os.path.exists(filename):
-        default_messages = [
+def charger_messages_spam(fichier="spam.txt"):
+    if not os.path.exists(fichier):
+        messages_defaut = [
             "CDM Tech - CDM 503 🔥",
-            "Sky Plug - Code & Conquer ⚡",
-            "CDM Family - Immortal Force 🚀",
-            "503 Access Granted 💀",
-            "Neo Flood Active 🔥"
+            "Sky Plug - Code & Conquête ⚡",
+            "CDM Family - Force Immortelle 🚀",
+            "503 Accès Autorisé 💀",
+            "Inondation Neo Active 🔥"
         ]
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(default_messages))
+        with open(fichier, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(messages_defaut))
     
-    with open(filename, 'r', encoding='utf-8') as f:
-        messages = [line.strip() for line in f.readlines() if line.strip()]
+    with open(fichier, 'r', encoding='utf-8') as f:
+        messages = [ligne.strip() for ligne in f.readlines() if ligne.strip()]
     return messages
 
-def open_whatsapp_link(phone_number, message):
-    clean_number = ''.join(filter(str.isdigit, phone_number))
-    encoded_message = message.replace(' ', '%20').replace('\n', '%0A')
-    link = f"https://wa.me/{clean_number}?text={encoded_message}"
+def ouvrir_lien_whatsapp(numero_telephone, message):
+    numero_propre = ''.join(filter(str.isdigit, numero_telephone))
+    message_encode = message.replace(' ', '%20').replace('\n', '%0A')
+    lien = f"https://wa.me/{numero_propre}?text={message_encode}"
     
     try:
-        subprocess.Popen(['xdg-open', link])
+        subprocess.Popen(['xdg-open', lien])
     except:
         try:
-            subprocess.Popen(['open', link])
+            subprocess.Popen(['open', lien])
         except:
-            subprocess.Popen(['start', link], shell=True)
+            subprocess.Popen(['start', lien], shell=True)
 
-def spam_worker(phone_number, messages, spam_count, delay_range):
-    for i in range(spam_count):
-        msg = random.choice(messages)
-        open_whatsapp_link(phone_number, msg)
-        delay = random.uniform(*delay_range)
-        time.sleep(delay)
+def envoyer_message(numero_telephone, message):
+    """Fonction pour envoyer un seul message - encapsulée pour la logique de reconnexion"""
+    ouvrir_lien_whatsapp(numero_telephone, message)
+    return True
+
+def travailleur_spam(numero_telephone, messages, nombre_spam, intervalle_delai):
+    for i in range(nombre_spam):
+        try:
+            msg = random.choice(messages)
+            envoyer_message(numero_telephone, msg)
+            delai = random.uniform(*intervalle_delai)
+            time.sleep(delai)
+        except Exception as e:
+            print(f"{RED}[!] Erreur lors de l'envoi du message : {e}{RESET}")
+            # Logique de reconnexion avec réessai
+            nombre_tentatives = 0
+            tentatives_max = 3
+            while nombre_tentatives < tentatives_max:
+                try:
+                    typewriter(f"[*] Tentative de reconnexion... ({nombre_tentatives + 1}/{tentatives_max})", YELLOW, 0.02)
+                    time.sleep(2)  # Attendre avant de se reconnecter
+                    msg = random.choice(messages)
+                    envoyer_message(numero_telephone, msg)
+                    typewriter("[+] Reconnecté avec succès !", GREEN, 0.02)
+                    delai = random.uniform(*intervalle_delai)
+                    time.sleep(delai)
+                    break  # Succès, sortir de la boucle de réessai
+                except Exception as erreur_reconnexion:
+                    nombre_tentatives += 1
+                    print(f"{RED}[!] Tentative de reconnexion {nombre_tentatives} échouée : {erreur_reconnexion}{RESET}")
+                    if nombre_tentatives == tentatives_max:
+                        typewriter("[!] Nombre maximal de tentatives atteint. Message ignoré...", RED, 0.02)
+                        time.sleep(intervalle_delai[1])  # Attendre avant de continuer
+                        continue
 
 def main():
     print_banner()
-    typewriter("INITIALIZING CDM TECH SYSTEM...", GREEN, 0.02)
-    typewriter(f"{BOLD}DEVELOPER: SKY PLUG{RESET}", PURPLE, 0.03)
+    typewriter("INITIALISATION DU SYSTÈME CDM TECH...", GREEN, 0.02)
+    typewriter(f"{BOLD}DÉVELOPPEUR: SKY PLUG{RESET}", PURPLE, 0.03)
     time.sleep(1)
     
-    typewriter("TARGET ACQUISITION:", BLUE)
-    target_number = input(f"{PURPLE}╠══[CDM503]> {RED}PHONE: {RESET}").strip()
+    typewriter("ACQUISITION DE LA CIBLE:", BLUE)
+    numero_cible = input(f"{PURPLE}╠══[CDM503]> {RED}TÉLÉPHONE: {RESET}").strip()
     
-    typewriter("FLOOD INTENSITY:", BLUE)
-    spam_count = int(input(f"{PURPLE}╠══[CDM503]> {RED}COUNT: {RESET}"))
+    typewriter("INTENSITÉ DE L'INONDATION:", BLUE)
+    nombre_spam = int(input(f"{PURPLE}╠══[CDM503]> {RED}NOMBRE: {RESET}"))
     
-    typewriter("ATTACK TIMING:", BLUE)
-    delay_min = float(input(f"{PURPLE}╠══[CDM503]> {RED}MIN(s): {RESET}"))
-    delay_max = float(input(f"{PURPLE}╠══[CDM503]> {RED}MAX(s): {RESET}"))
+    typewriter("CALIBRAGE TEMPOREL:", BLUE)
+    delai_min = float(input(f"{PURPLE}╠══[CDM503]> {RED}MIN(s): {RESET}"))
+    delai_max = float(input(f"{PURPLE}╠══[CDM503]> {RED}MAX(s): {RESET}"))
     
-    messages = load_spam_messages()
-    typewriter(f"PAYLOADS LOADED: {len(messages)}", YELLOW)
+    messages = charger_messages_spam()
+    typewriter(f"CHARGEMENT DES PAYLOADS : {len(messages)}", YELLOW)
     
     clear_screen()
     print_banner()
-    typewriter("READY TO DEPLOY?", RED)
-    confirm = input(f"{PURPLE}╠══[CDM503]> {RED}LAUNCH (Y/N): {RESET}").lower()
+    typewriter("PRÊT À DÉPLOYER ?", RED)
+    confirmation = input(f"{PURPLE}╠══[CDM503]> {RED}LANCER (O/N): {RESET}").lower()
     
-    if confirm == 'y':
-        typewriter("FLOOD SEQUENCE ACTIVE...", GREEN)
+    if confirmation == 'o':
+        typewriter("SÉQUENCE D'INONDATION ACTIVE...", GREEN)
         typewriter("CDM TECH - CDM 503", YELLOW)
-        typewriter(f"{BOLD}BY SKY PLUG{RESET}", CYAN)
+        typewriter(f"{BOLD}PAR SKY PLUG{RESET}", CYAN)
         
-        spam_thread = Thread(target=spam_worker, args=(target_number, messages, spam_count, (delay_min, delay_max)))
-        spam_thread.daemon = True
-        spam_thread.start()
+        thread_spam = Thread(target=travailleur_spam, args=(numero_cible, messages, nombre_spam, (delai_min, delai_max)))
+        thread_spam.daemon = True
+        thread_spam.start()
         
         try:
             while True:
                 time.sleep(1)
         except KeyboardInterrupt:
-            typewriter("\nCDM TECH SYSTEM DISCONNECTED", RED)
-            typewriter("SKY PLUG - SIGNING OFF", PURPLE)
+            typewriter("\nSYSTÈME CDM TECH DÉCONNECTÉ", RED)
+            typewriter("SKY PLUG - DÉCONNEXION", PURPLE)
     else:
-        typewriter("OPERATION CANCELLED", RED)
+        typewriter("OPÉRATION ANNULÉE", RED)
 
 if __name__ == "__main__":
     main()
