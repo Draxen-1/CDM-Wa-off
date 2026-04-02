@@ -2,7 +2,13 @@
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:00FFB3&height=200&section=header&text=CDM%20TECH&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35"/>
 </p>
+<p align="center">
+  <img src="https://files.catbox.moe/lk03mk.png" alt="CDM TECH 503" width="600">
+</p>
 
+<p align="center">
+  <strong style="color:#00FFCC;">CDM TECH 503 — CYBER LAB • ELITE OPS</strong>
+</p>
 <h1 align="center">⚡ CDM-Wa-off ⚡</h1>
 
 <p align="center">
