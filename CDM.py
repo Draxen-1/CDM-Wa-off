@@ -61,7 +61,7 @@ def charger_messages_spam(fichier="spam.txt"):
 def ouvrir_lien_whatsapp(numero_telephone, message):
     numero_propre = ''.join(filter(str.isdigit, numero_telephone))
     message_encode = message.replace(' ', '%20').replace('\n', '%0A')
-    lien = f"https://wa.me/{numero_propre}?text={message_encode}"
+    lien = f"https://api.whatsapp.com/send?phone={numero_propre}&text={message_encode}"
     
     try:
         subprocess.Popen(['xdg-open', lien])
@@ -150,3 +150,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+#MODZ BY XENIX
